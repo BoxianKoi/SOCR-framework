@@ -1,5 +1,8 @@
 exports.config =
   # See docs at http://brunch.readthedocs.org/en/latest/config.html.
+  conventions:
+    ignored: /(^vendor\\.*\.less)|(^vendor\/.*\.less)|(^|\/)node_modules\/|(^|\/)_/
+    assets: /^app\/assets\//
   modules:
     definition: false
     wrapper: false
@@ -14,41 +17,23 @@ exports.config =
       order:
         before: [
           'vendor/scripts/console-helper.js'
-          # ###
-          #   jQuery 1.8.3
-          # ###
-          'vendor/scripts/jquery-1.8.3.js'
-
           'vendor/scripts/angular/angular.js'
 
           # ###
           #   AngularJs support libraries
           # ###
-          'vendor/scripts/angular/angular-resource.js'
-          'vendor/scripts/angular/angular-cookies.js'
           'vendor/script/angular/angular-ui-states.js'
           'vendor/scripts/angular-ui/angular-ui.js'
           'vendor/scripts/angular-ui/angular-ui-ieshiv.js'
           'vendor/scripts/angular-ui/ng-grid/ng-grid.js'
           'vendor/scripts/angular-ui/bootstrap/ui-bootstrap-tpls-0.2.0.js'
-
-          # ###
-          #    Twitter Bootstrap js files.
-          #    Replace it with one bootstrap.js file.
-          # ###
-          'vendor/scripts/bootstrap/bootstrap-transition.js'
-          'vendor/scripts/bootstrap/bootstrap-alert.js'
-          'vendor/scripts/bootstrap/bootstrap-button.js'
-          'vendor/scripts/bootstrap/bootstrap-carousel.js'
-          'vendor/scripts/bootstrap/bootstrap-collapse.js'
-          'vendor/scripts/bootstrap/bootstrap-dropdown.js'
-          'vendor/scripts/bootstrap/bootstrap-modal.js'
-          'vendor/scripts/bootstrap/bootstrap-tooltip.js'
-          'vendor/scripts/bootstrap/bootstrap-popover.js'
-          'vendor/scripts/bootstrap/bootstrap-scrollspy.js'
-          'vendor/scripts/bootstrap/bootstrap-tab.js'
-          'vendor/scripts/bootstrap/bootstrap-typeahead.js'
-          'vendor/scripts/bootstrap/bootstrap-affix.js'
+          'vendor/console-polyfill/index.js'
+          'vendor/jquery/jquery.js'
+          'vendor/angular/angular.js'
+          'vendor/angular-resource/angular-resource.js'
+          'vendor/angular-cookies/angular-cookies.js'
+          'vendor/angular-sanitize/angular-sanitize.js'
+          'vendor/bootstrap/docs/assets/js/bootstrap.js'
         ]
 
     stylesheets:
@@ -56,10 +41,30 @@ exports.config =
         'css/app.css': /^(app|vendor)/
     templates:
       joinTo: 'js/templates.js'
+      order:
+        before: [
+          'app/styles/app.less'
+        ]
+
+    templates:
+      joinTo: 
+        'js/dontUseMe' : /^app/ # dirty hack for Jade compiling.
 
   plugins:
     jade:
       pretty: yes # Adds pretty-indentation whitespaces to output (false by default)
+    jade_angular:
+      modules_folder: 'partials'
+      locals: {}
+
+    bower:
+      extend:
+        "bootstrap" : 'vendor/bootstrap/docs/assets/js/bootstrap.js'
+        "angular-mocks": []
+        "styles": []
+      asserts:
+        "img" : /bootstrap(\\|\/)img/
+        "font": /font-awesome(\\|\/)font/
 
   # Enable or disable minifying of result js / css files.
   # minify: true

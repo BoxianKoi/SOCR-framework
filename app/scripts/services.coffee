@@ -14,3 +14,4 @@ services.factory 'version', -> "0.0.1.0"
 #services.run([ ()->
 #  console.log "run block of app.services "
 #])
+

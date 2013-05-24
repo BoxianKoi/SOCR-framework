@@ -11,7 +11,6 @@
 #
 #    it "should make scope testable", inject ($rootScope, $controller) ->
 #      scope = $rootScope.$new()
-#      #returns the instance of MyCtrl
 #      ctrl = $controller "MyCtrl1",
 #        $scope: scope,
 #      expect(scope.onePlusOne).toEqual(2)
