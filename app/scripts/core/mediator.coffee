@@ -105,7 +105,6 @@ mediator = angular.module('app.mediator', [])
       context = obj.context
     else
       context = this
-
     if obj.msgScope?
       msgScope = obj.msgScope
       i=0

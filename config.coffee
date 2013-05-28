@@ -16,38 +16,36 @@ exports.config =
         'test/scenarios.js': /^test(\/|\\)e2e/
       order:
         before: [
-          'vendor/scripts/console-helper.js'
-          'vendor/scripts/angular/angular.js'
-
           # ###
           #   AngularJs support libraries
           # ###
-          'vendor/script/angular/angular-ui-states.js'
-          'vendor/scripts/angular-ui/angular-ui.js'
-          'vendor/scripts/angular-ui/angular-ui-ieshiv.js'
-          'vendor/scripts/angular-ui/ng-grid/ng-grid.js'
-          'vendor/scripts/angular-ui/bootstrap/ui-bootstrap-tpls-0.2.0.js'
-          'vendor/console-polyfill/index.js'
-          'vendor/jquery/jquery.js'
           'vendor/angular/angular.js'
           'vendor/angular-resource/angular-resource.js'
           'vendor/angular-cookies/angular-cookies.js'
           'vendor/angular-sanitize/angular-sanitize.js'
+          'vendor/angular-ui-states/angular-ui-states.js'
+          'vendor/jquery/jquery.js'
           'vendor/bootstrap/docs/assets/js/bootstrap.js'
+
+#          'vendor/angular-ui/angular-ui.js'
+#          'vendor/angular-ui/angular-ui-ieshiv.js'
+#          'vendor/angular-ui/ng-grid/ng-grid.js'
+          'vendor/angular-ui/bootstrap/ui-bootstrap-tpls-0.2.0.js'
+          'vendor/console-polyfill/index.js'
+
+
+
         ]
 
     stylesheets:
       joinTo:
         'css/app.css': /^(app|vendor)/
-    templates:
-      joinTo: 'js/templates.js'
       order:
         before: [
           'app/styles/app.less'
         ]
-
     templates:
-      joinTo: 
+      joinTo:
         'js/dontUseMe' : /^app/ # dirty hack for Jade compiling.
 
   plugins:

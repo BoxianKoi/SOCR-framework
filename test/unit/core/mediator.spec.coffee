@@ -144,10 +144,11 @@ describe "Mediator", ->
 
     it "should return false when no msgScope is provided", ->
       inject (pubSub)->
-        expect pubSub.subscribe
+        expect(pubSub.subscribe
           msg:"test message"
           listener:()->
             console.log "listener is getting executed!!"
+        )
         .toEqual(false)
 
     it "should should subscribe to a message", ->
@@ -163,10 +164,11 @@ describe "Mediator", ->
     it "returns false if callback is not a function", ->
       inject (pubSub) ->
         console.log "TEST -- it returns false if callback is not a function"
-        expect pubSub.subscribe
+        expect(pubSub.subscribe
           msg:"test message"
           listener:345
           msgScope:["test"]
+        )
         .toEqual false
 
     it "subscribes a function to several messages", ->
